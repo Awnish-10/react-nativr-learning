@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "235564744183",
+    "project_id": "reactnativelearning-f410b",
+    "storage_bucket": "reactnativelearning-f410b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235564744183:android:be6e02e11157ede52782f2",
+        "android_client_info": {
+          "package_name": "com.reactnativelearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235564744183-ool59gonpphltvqv07oaj5ena2tud721.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reactnativelearning",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "235564744183-7l08t5atpk377gb9f1fhsvh09c2dkon2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC6-06SqUV-JhzeIXDxoTfBi0xXAje4SE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235564744183-7l08t5atpk377gb9f1fhsvh09c2dkon2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235564744183-ftte9f7ihse28nb384p1nctp8u95momb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.ReactNativeLearning"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
