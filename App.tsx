@@ -22,28 +22,14 @@ import { NotificationListner, requestUserPermission } from './src/utilities/push
 const Stack = createStackNavigator();
 
 function App(): JSX.Element {
-  // useEffect(() => {
-  //   requestUserPermission();
-  //   NotificationListner()
-  // }, [])
+  useEffect(() => {
+    fcmtoken()
+  }, [])
 
-  // PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
-  // const HandleDeepLinking = () => {
-  //   const {navigate} = useNavigation()
-  //   const handleDynamicLinks = async (link:any) => {
-  //     console.log('Foreground link handling:', link)
-  //     let productId = link.url.split('=').pop()
-  //     console.log('productId:', productId,)
-  //     //@ts-ignore
-  //       navigate('ProductDetail', { productId: productId })
-  //   }
-  //   useEffect(() => {
-  //     const unsubscribe = dynamicLinks().onLink(handleDynamicLinks)
-  //     return () => unsubscribe()
-  //   }, [])
-
-  //   return null
-  // }
+  const fcmtoken = async () => {
+    console.log(
+      await messaging().getToken())
+  }
 
   const HandleDeepLinking = () => {
     const { navigate } = useNavigation()
@@ -88,34 +74,10 @@ function App(): JSX.Element {
 
 
 
-  // useEffect(() => {
-  //   messaging().setBackgroundMessageHandler(async
-  //   remote Message => {
-  //   console.log('Message handled in the background!', remote Message);
-  //   })
-  //   const unsubscribe = messaging().on Message(async remote Message => {
-  //   Alert.alert('A new FCM message arrived!", JSON.stringify(remote Message));
-  //   console.log(remoteMessage)
-  //   });
-  //   return unsubscribe;
-  //   }, []);
-
-
-
-  // useEffect(() => {
-  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
-  //     Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-  //   });
-
-  //   return unsubscribe;
-  // }, []);
   async function requestUserPermission() {
     const authorizationStatus = await messaging().requestPermission();
     messaging().onNotificationOpenedApp(async (remoteMessage) => {
       console.log(remoteMessage, "remote")
-      // const data=await getarticlebyid(remoteMessage.data.articleId);
-      // console.log(data,"article")
-      // navigate(routes.SINGLEFEED,{item:data?.data})
     });
 
     // // Check whether an initial notification is available
@@ -127,23 +89,18 @@ function App(): JSX.Element {
             "Notification caused app to open from quit state:",
             remoteMessage
           );
-          //     const data=await getarticlebyid(remoteMessage.data.articleId);
-          // console.log(data,"article")
-          // navigate(routes.SINGLEFEED,{item:data?.data})
         }
       })
 
     if (authorizationStatus) {
       console.log('Permission status:', authorizationStatus);
     }
-    const fcmtoken = await messaging().getToken();
-    console.log("fcmtoken",fcmtoken);
-    
+
   }
   useEffect(() => {
     requestUserPermission()
-
-  }, []);
+  }, [])
+  
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('A new FCM message arrived!', remoteMessage);
@@ -153,8 +110,6 @@ function App(): JSX.Element {
   }, []);
   messaging().setBackgroundMessageHandler(async remoteMessage => {
     console.log('Message handled in the background!', remoteMessage);
-    // const data = await getarticlebyid(remoteMessage.data.articleId);
-    // navigate(routes.SINGLEFEED, { item: data?.data })
   });
   return (
     <NavigationContainer >
