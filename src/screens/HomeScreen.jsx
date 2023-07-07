@@ -13,9 +13,9 @@ import { useNavigation } from '@react-navigation/native';
 const Home = () => {
     const [data, setData] = useState([]);
     const navigation = useNavigation()
-
+// console.log("data",data);
     const getApiData = () => {
-        fetch(`https://dummyjson.com/products?skip=0&limit=12`)
+        fetch(`https://dummyjson.com/products?skip=0&limit=10`)
             .then(res => res.json())
             .then(json => {
                 setData([...data, ...json.products]);
@@ -32,6 +32,7 @@ const Home = () => {
     const keyExtractor = key => `${key.id}`;
 
     const renderItem = ({ item, index }) => {
+        // console.log('item.thumbnail',item.thumbnail);
         return (
             <Pressable onPress={() => navigation.navigate('ProductDetail', { productId: item.id })} style={styles.flatStyle}>
                 <Image style={styles.imgStyle} source={{ uri: item.thumbnail }} />

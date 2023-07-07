@@ -5,11 +5,13 @@ import App from './App';
 import { name as appName } from './app.json';
 import { Provider } from 'react-redux';
 import configureStore from './configureStore';
-import dynamicLinks from '@react-native-firebase/dynamic-links';
-import { useNavigation } from '@react-navigation/native';
-import { NavigationContainer } from '@react-navigation/native';
+import messaging from '@react-native-firebase/messaging';
 const store = configureStore()
 
+// Register background handler
+messaging().setBackgroundMessageHandler(async remoteMessage => {
+  console.log('Message handled in the background!', remoteMessage);
+});
 
 const RNRedux = () => (
   <Provider store={store}>
